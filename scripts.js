@@ -5,17 +5,22 @@
 //1.Evita el comportamiento por defecto al hacer click. Por ejemplo, si hago click sobre un enlace, este no me llevará a otra página.
 
 let enlaces=document.querySelectorAll("a")
+//console.log(document.querySelectorAll("a")) 
 
-//enlaces=document.addEventListener('click','type')
+enlaces.forEach((enlace)=>{
+    enlace.addEventListener('click',(ev)=>{
+ev.preventDefault()
+        //console.log(ev)
+        //mostrarMensaje('mensaje desde el evento')
+    });
 
-console.log(document.querySelectorAll("a")) 
-/*
-enlaces.addEventListener('click',()=>{
-    mostrarMensaje('mensaje desde el evento')
-});
+})
 
 
-function mostrarMensaje(mensaje){
+
+
+
+/*function mostrarMensaje(mensaje){
     console.log(mensaje);
 }*/
 
@@ -26,18 +31,27 @@ function mostrarMensaje(mensaje){
 
 let imagenes=document.querySelectorAll("img")
 
+imagenes.forEach((item)=>{
+    item.addEventListener('click',(ev)=>{
+        ev.target.src='assets/magic-1.gif';
+        console.log(ev.target)
+    })
+    //item.src='assets/magic-1.gif';
+    //item.setAttribute('src','assets/magic-1.gif')
 
-console.log(document.querySelectorAll("img"))
-
-
+})
 
 //2.2 Párrafos: Cambia el color del texto y el de fondo por uno cualquiera.
 
 let parrafos=document.querySelectorAll("p")
 
 parrafos.forEach((item)=>{
-    item.style.background='green';
-    item.style.color='red';
+    item.addEventListener('click',()=>{
+            item.style.background='green';
+            item.style.color='red'; 
+        }
+    )
+    
 })
 
 console.log(document.querySelectorAll("p"))
@@ -72,6 +86,21 @@ console.log(document.querySelectorAll('section'))
 
 
 //3.1 Imágenes: Cambia la imagen por el gif abracadabra.gif.
+
+imagenes.forEach((item)=>{
+    let valorOriginal;
+    item.addEventListener('mouseenter',(ev)=>{
+        valorOriginal=ev.target.src;
+        ev.target.src='assets/abracadabra.gif';
+    })
+    item.addEventListener('mouseleave',(ev)=>{
+        ev.target.src=valorOriginal;
+        console.log(ev.target,valorOriginal)
+    })
+
+
+})
+
 
 
 
